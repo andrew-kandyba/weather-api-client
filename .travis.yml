@@ -30,11 +30,9 @@ install:
 script:
   - ./bin/phpunit
   # this checks that the source code follows the Symfony Code Syntax rules
-  - '[[ "$TRAVIS_PHP_VERSION" == "7.4snapshot" ]] || ./vendor/bin/php-cs-fixer fix --diff --dry-run -v'
+  - './vendor/bin/php-cs-fixer fix --diff --dry-run -v'
   # this checks that the YAML config files contain no syntax errors
   - ./bin/console lint:yaml config
-  # this checks that the application doesn't use dependencies with known security vulnerabilities
-  - ./bin/console security:check
   #  Fail CI if the repo is in a dirty state after building assets
   #  (disabled until we can find the reason why it fails randomly)
   #- yarn install && yarn encore production && git add --all && git diff --staged --shortstat --exit-code
