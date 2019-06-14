@@ -1,4 +1,4 @@
-controllers:
-    resource: ../../src/Controller/
-    type: annotation
-    prefix: /api/v1/
+api:
+  resource: ../../src/Infrastructure/Http/Rest/Controller/
+  type: annotation
+  prefix: /api/v1/
