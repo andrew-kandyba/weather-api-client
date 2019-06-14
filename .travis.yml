@@ -20,7 +20,7 @@ matrix:
     - php: 7.3
 
 before_install:
-  - phpenv config-rm xdebug.ini'
+  - phpenv config-rm xdebug.ini
   - composer self-update
 
 install:
@@ -30,7 +30,7 @@ install:
 script:
   - ./bin/phpunit
   # this checks that the source code follows the Symfony Code Syntax rules
-  - './vendor/bin/php-cs-fixer fix --diff --dry-run -v'
+  - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
   # this checks that the YAML config files contain no syntax errors
   - ./bin/console lint:yaml config
   #  Fail CI if the repo is in a dirty state after building assets
