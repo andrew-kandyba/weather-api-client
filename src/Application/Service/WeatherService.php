@@ -2,7 +2,9 @@
 
 namespace App\Application\Service;
 
-use App\Application\Contract\WeatherDataProviderContract;
+use App\Infrastructure\Http\Rest\DTO\WeatherDTO;
+use Symfony\Component\HttpFoundation\Response;
+use App\Application\Contract\DataProviderContract;
 
 /**
  * Service for work weather data.
@@ -10,31 +12,31 @@ use App\Application\Contract\WeatherDataProviderContract;
 class WeatherService
 {
     /**
-     * Weather data provider object.
+     * WeatherDTO data provider object.
      *
-     * @var WeatherDataProviderContract
+     * @var DataProviderContract
      */
     private $weatherDataProvider;
 
     /**
      * WeatherService constructor.
      *
-     * @param WeatherDataProviderContract $weatherDataProvider Weather data provider object.
+     * @param DataProviderContract $weatherDataProvider WeatherDTO data provider object.
      */
-    public function __construct(WeatherDataProviderContract $weatherDataProvider)
+    public function __construct(DataProviderContract $weatherDataProvider)
     {
         $this->weatherDataProvider = $weatherDataProvider;
     }
 
     /**
-     * Get weather in the city by zipCode.
+     * Get weather in the city.
      *
-     * @param string $cityZipCode City zipCode.
+     * @param string $cityIdentifier City identifier. (ex. zipCode).
      *
-     * @return mixed
+     * @return WeatherDTO
      */
-    public function getWeatherInTheCityByCityZipCode(string $cityZipCode)
+    public function getData(string $cityIdentifier): WeatherDTO
     {
-        return $this->weatherDataProvider->getWeatherInTheCityByCityZipCode($cityZipCode);
+        return $this->weatherDataProvider->getData($cityIdentifier);
     }
 }
