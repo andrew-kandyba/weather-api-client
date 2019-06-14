@@ -4,8 +4,8 @@ namespace App\Infrastructure\Http\Rest\Controller;
 
 use App\Application\Service\WeatherService;
 use Symfony\Component\HttpFoundation\Response;
-use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\Serializer\SerializerInterface;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 

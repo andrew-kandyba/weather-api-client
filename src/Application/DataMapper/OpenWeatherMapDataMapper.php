@@ -18,9 +18,13 @@ class OpenWeatherMapDataMapper implements DataMapperContract
         /** @noinspection JsonDecodeUsageInspection */
         $dataObject = json_decode($data);
 
-        return new WeatherDTO(
-            $dataObject->name,
+        if (true === is_object($dataObject)) {
+            return new WeatherDTO(
+                $dataObject->name,
             (string) $dataObject->main->temp,
             (string) $dataObject->main->pressure);
+        }
+
+        return new WeatherDTO('no data','no data','no data');
     }
 }
