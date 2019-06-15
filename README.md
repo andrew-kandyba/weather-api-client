@@ -67,7 +67,7 @@ components:
           example: 768.0
 
 paths:
-  /weather/{cityZipCode}/:
+  /api/v1/weather/{cityZipCode}/:
     get:
       description: Returns weather in the city.
       parameters:
