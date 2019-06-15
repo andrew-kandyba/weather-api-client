@@ -56,7 +56,7 @@ class OpenWeatherMapDataProvider implements DataProviderContract
     {
         $queryParam = http_build_query([
             'appid' => self::API_KEY,
-            'zip'   => $cityZipCode,
+            'zip'   => $cityZipCode . ',ua',
         ]);
 
         $requestUri = self::API_ENDPOINT . '?' . $queryParam;
