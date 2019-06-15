@@ -17,7 +17,7 @@ class WeatherDTOTest extends TestCase
      */
     private $dtoInstance;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
