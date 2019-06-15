@@ -19,7 +19,7 @@ composer install
 php bin/console server:run
 ```
 
-## Endpoints
+### Endpoint
 `api/v1/weather/{cityZipCode}` - получение данных о погоде, используя zip код города.
 
 Некоторые доступные zip коды
