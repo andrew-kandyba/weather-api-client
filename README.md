@@ -28,3 +28,55 @@ php bin/console server:run
 61144 - Харьков
 49000 - Днепр
 ```
+
+### Specification
+https://editor.swagger.io/
+```
+openapi: 3.0.2
+info:
+  title: Weather api.
+  description: Access current weather data for any ukrainian city.
+  version: "1.0"
+components:
+  parameters:
+    cityZipCode:
+      name: cityZipCode
+      in: path
+      required: true
+      description: The zip code of the city (Only Ukraine).
+      schema:
+        type: integer
+        minLength: 5
+        maxLength: 5
+  schemas:
+    WeatherDetailsResponse:
+      properties:
+        city:
+          description: 'City.'
+          type: string
+          example: Kiev
+        temp:
+          description: 'Temperature. (°F)'
+          type: number
+          format: float
+          example: 274.1
+        pressure:
+          description: 'Atmospheric pressure. (mm)'
+          type: number
+          format: float
+          example: 768.0
+
+paths:
+  /weather/{cityZipCode}/:
+    get:
+      description: Returns weather in the city.
+      parameters:
+        - $ref: '#/components/parameters/cityZipCode'
+      responses:
+        200:
+          description: Weather data object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeatherDetailsResponse'
+```
